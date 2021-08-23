@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
+   # root route
+   # another way would be: get "/", to: "main#index", as: :root
+   root to: "main#index"
+
   # Get /about
   get "/about", to: "about#index", as: :about
 
-  # root route
-  get "/", to: "main#index", as: :root # another way would be: root to: "main#index"
+  # Get /sign_up
+  get "sign_up", to: "registrations#new"
+  post "sign_up", to: "registrations#create"
 end
