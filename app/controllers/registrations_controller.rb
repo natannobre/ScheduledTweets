@@ -8,6 +8,7 @@ class RegistrationsController < ApplicationController
         # render plain: params[:user] # This print out tha params hash, but just the portion corresponding to users
         @user = User.new(user_params)
         if @user.save
+            session[:user_id] = @user.id # "session" is Rails encrypted hash cookies
             redirect_to root_path, notice: "Successfuly created account"
         else
             render :new # :new will render views/registrations/new.html.erb
